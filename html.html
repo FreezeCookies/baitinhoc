@@ -35,65 +35,149 @@
       display: block;
       margin: 10px auto;
       width: 500px;
+      cursor: pointer;
+    }
+
+    .zoom {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      text-align: center;
+    }
+
+    .zoom img {
+      margin-top: 60px;
+      width: 70%;
+    }
+
+    .nut {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+    }
+
+    .nut button {
+      font-size: 20px;
+      margin-left: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="khung">
+<div class="khung">
 
-    <h1>CHUYÊN ĐỀ 2 TIN HỌC LỚP 12</h1>
+  <h1>CHUYÊN ĐỀ 2 TIN HỌC LỚP 12</h1>
 
-    <center><p><b>Đây là các sơ đồ tư duy từ bài 7 đến bài 12.</b></p></center>
+  <center><p><b>Đây là các sơ đồ tư duy từ bài 7 đến bài 12.</b></p></center>
 
-    <h2>Bài 7</h2>
-    <img src="bai7.png">
+  <h2>Bài 7</h2>
+  <img src="bai7.png" onclick="moAnh(this.src)">
 
-    <h2>Bài 8</h2>
-    <img src="bai8.png">
+  <h2>Bài 8</h2>
+  <img src="bai8.png" onclick="moAnh(this.src)">
 
-    <h2>Bài 9</h2>
-    <img src="bai9.png">
+  <h2>Bài 9</h2>
+  <img src="bai9.png" onclick="moAnh(this.src)">
 
-    <h2>Bài 10</h2>
-    <img src="bai10.png">
+  <h2>Bài 10</h2>
+  <img src="bai10.png" onclick="moAnh(this.src)">
 
-    <h2>Bài 11</h2>
-    <img src="bai11.png">
+  <h2>Bài 11</h2>
+  <img src="bai11.png" onclick="moAnh(this.src)">
 
-    <h2>Bài 12</h2>
-    <img src="bai12.png">
+  <h2>Bài 12</h2>
+  <img src="bai12.png" onclick="moAnh(this.src)">
 
-    <hr>
+  <hr>
 
-    <h2>Prompt chung sử dụng AI</h2>
+  <h2>Prompt chung sử dụng AI</h2>
 
-    <p>
-      Các sơ đồ tư duy từ bài 7-11 được tạo bằng AI thông qua website:
-      <b><a href="https://monica.im/home">https://monica.im/home</a></b>
-    </p>
+  <p>
+    Các sơ đồ tư duy từ bài 7–11 được tạo bằng AI thông qua website:
+    <b><a href="https://monica.im/home">https://monica.im/home</a></b>
+  </p>
 
-    <p><b>Prompt được sử dụng:</b></p>
+  <p><b>Prompt được sử dụng:</b></p>
 
-    <p>
-      Hãy đọc file PDF các bài từ bài 7 đến bài 11<br>
-      và tạo từng sơ đồ tư duy cho mỗi bài,<br>
-      nội dung ngắn gọn, dễ hiểu,<br>
-      đúng kiến thức Tin học lớp 12.
-    </p>
-    <p>
-     Sơ đồ tư duy bài 12 được tạo bằng AI thông qua website:
-      <b><a href="https://mindmapai.app/">https://mindmapai.app/</a></b>
-    </p>
-    <p>
-      Hãy đọc file PDF bài 12<br>
-      và vẽ sơ đồ tư duy như là vẽ ra nhánh<br>
-      các ý chính cho tôi về bài 12<br>
-      môn tin lớp 12 học sách giáo khoa kết nối tri thức.<br>
-    </p>
+  <p>
+    Hãy đọc file PDF các bài từ bài 7 đến bài 11<br>
+    và tạo từng sơ đồ tư duy cho mỗi bài,<br>
+    nội dung ngắn gọn, dễ hiểu,<br>
+    đúng kiến thức Tin học lớp 12.
+  </p>
 
+  <p>
+    Sơ đồ tư duy bài 12 được tạo bằng AI thông qua website:
+    <b><a href="https://mindmapai.app/">https://mindmapai.app/</a></b>
+  </p>
+
+  <p>
+    Hãy đọc file PDF bài 12<br>
+    và vẽ sơ đồ tư duy theo các nhánh ý chính<br>
+    môn Tin học lớp 12 – sách Kết nối tri thức.
+  </p>
+
+  <hr>
+
+  <h2>Danh sách thành viên</h2>
+
+  <ol start="25">
+    <li>Nguyễn Tài Phát</li>
+    <li>Nguyễn Hoàng Phúc</li>
+    <li>Nguyễn Thạch Yến Sương</li>
+    <li>Cao Minh Sang</li>
+  </ol>
+
+  <p><i>Ghi chú: Trang web có sự hỗ trợ của ChatGPT về phần thu phóng ảnh.</i></p>
+
+</div>
+
+<div class="zoom" id="zoom" onclick="dongAnh()">
+
+  <div class="nut" onclick="event.stopPropagation()">
+    <button onclick="phongTo()">+</button>
+    <button onclick="thuNho()">−</button>
   </div>
+
+  <img id="anhTo">
+
+</div>
+
+<script>
+  let size = 70;
+
+  function moAnh(src) {
+    document.getElementById("zoom").style.display = "block";
+    document.getElementById("anhTo").src = src;
+    size = 70;
+    document.getElementById("anhTo").style.width = size + "%";
+  }
+
+  function dongAnh() {
+    document.getElementById("zoom").style.display = "none";
+  }
+
+  function phongTo() {
+    if (size < 100) {
+      size += 10;
+      document.getElementById("anhTo").style.width = size + "%";
+    }
+  }
+
+  function thuNho() {
+    if (size > 30) {
+      size -= 10;
+      document.getElementById("anhTo").style.width = size + "%";
+    }
+  }
+</script>
 
 </body>
 </html>
